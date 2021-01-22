@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://VATBrowse.caption"
+        focusComponent="vATsTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.contract.vat">
+    <data readOnly="true">
+        <collection id="vATsDc"
+                    class="com.brhouselab.brc.entity.department.contract.VAT">
+            <view extends="_local"/>
+            <loader id="vATsDl">
+                <query>
+                    <![CDATA[select e from brc_VAT e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="vATsTable"
+            spacing="true">
+        <table id="vATsTable"
+               width="100%"
+               dataContainer="vATsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="value"/>
+                <column id="note"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="vATsTable.create"/>
+                <button id="editBtn" action="vATsTable.edit"/>
+                <button id="removeBtn" action="vATsTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

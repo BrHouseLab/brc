@@ -1,0 +1,2 @@
+alter table BRC_MEASURE add constraint FK_BRC_MEASURE_ON_POSITION foreign key (POSITION_ID) references BRC_POSITION(ID);
+create index IDX_BRC_MEASURE_ON_POSITION on BRC_MEASURE (POSITION_ID);

@@ -1,0 +1,4 @@
+alter table BRC_REQUEST_ITEM add constraint FK_BRC_REQUEST_ITEM_ON_REQUEST foreign key (REQUEST_ID) references BRC_REQUEST(ID);
+alter table BRC_REQUEST_ITEM add constraint FK_BRC_REQUEST_ITEM_ON_ITEM foreign key (ITEM_ID) references BRC_ITEM(ID);
+create index IDX_BRC_REQUEST_ITEM_ON_REQUEST on BRC_REQUEST_ITEM (REQUEST_ID);
+create index IDX_BRC_REQUEST_ITEM_ON_ITEM on BRC_REQUEST_ITEM (ITEM_ID);

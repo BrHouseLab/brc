@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://contractOrderEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.contract.contractorder">
+    <data>
+        <instance id="contractOrderDc"
+                  class="com.brhouselab.brc.entity.department.contract.ContractOrder">
+            <view extends="_local">
+                <property name="packageMD" view="_local"/>
+            </view>
+            <loader/>
+            <collection id="packageMDDc" property="packageMD"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="600"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="packageMDBox" spacing="true">
+        <form id="form" dataContainer="contractOrderDc" >
+            <column width="350px">
+                <dateField id="dateField" property="date"/>
+                <textField id="numberField" property="number"/>
+                <textField id="costField" property="cost"/>
+                <textField id="statusField" property="status"/>
+                <textField id="noteField" property="note"/>
+            </column>
+        </form>
+        <groupBox id="packageMDBox"
+                  width="100%"
+                  caption="msg://com.brhouselab.brc.entity.department.contract/ContractOrder.packageMD">
+            <table id="packageMDTable" dataContainer="packageMDDc" width="100%" height="100%">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="createTs"/>
+                    <column id="fromPosition"/>
+                    <column id="toDestination"/>
+                    <column id="contract"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="packageMDTable.add"/>
+                    <button action="packageMDTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

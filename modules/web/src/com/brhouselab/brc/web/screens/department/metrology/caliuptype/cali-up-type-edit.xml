@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caliUpTypeEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.caliuptype">
+    <data>
+        <instance id="caliUpTypeDc"
+                  class="com.brhouselab.brc.entity.department.metrology.CaliUpType">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="caliUpTypeDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="shortNameField" property="shortName"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

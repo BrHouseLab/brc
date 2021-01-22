@@ -1,0 +1,5 @@
+create table BRC_SERVICE_MEASURE_DEVICE_NAME_LINK (
+    SERVICE_ID uuid,
+    MEASURE_DEVICE_NAME_ID uuid,
+    primary key (SERVICE_ID, MEASURE_DEVICE_NAME_ID)
+);

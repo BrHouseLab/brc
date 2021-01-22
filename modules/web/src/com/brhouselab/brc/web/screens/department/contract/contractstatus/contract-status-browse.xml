@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://contractStatusBrowse.caption"
+        focusComponent="contractStatusesTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.contract.contractstatus">
+    <data readOnly="true">
+        <collection id="contractStatusesDc"
+                    class="com.brhouselab.brc.entity.department.contract.ContractStatus">
+            <view extends="_local"/>
+            <loader id="contractStatusesDl">
+                <query>
+                    <![CDATA[select e from brc_ContractStatus e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="contractStatusesTable"
+            spacing="true">
+        <table id="contractStatusesTable"
+               width="100%"
+               dataContainer="contractStatusesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="contractStatusesTable.create"/>
+                <button id="editBtn" action="contractStatusesTable.edit"/>
+                <button id="removeBtn" action="contractStatusesTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

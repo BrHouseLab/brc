@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://taskBrowse.caption"
+        focusComponent="tasksTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.task">
+    <data readOnly="true">
+        <collection id="tasksDc"
+                    class="com.brhouselab.brc.entity.department.task.Task">
+            <view extends="_local" systemProperties="true">
+                <property name="executor" view="_local"/>
+                <property name="from" view="_minimal"/>
+            </view>
+            <loader id="tasksDl">
+                <query>
+                    <![CDATA[select e from brc_Task e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="tasksTable"
+            spacing="true">
+        <table id="tasksTable"
+               width="100%"
+               dataContainer="tasksDc" multiLineCells="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="createTs"/>
+                <column id="from.name"/>
+                <column id="description"/>
+                <column id="executor"/>
+                <column id="dateTo"/>
+                <column id="results"/>
+                <column id="doneDate"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="tasksTable.create"/>
+                <button id="editBtn" action="tasksTable.edit"/>
+                <button id="removeBtn" action="tasksTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,11 @@
+@import "halo-defaults";
+@import "com.brhouselab.brc/halo-ext-defaults";
+@import "app-components";
+@import "com.brhouselab.brc/halo-ext";
+
+.halo {
+  // include auto-generated app components SCSS
+  @include app_components;
+
+  @include com_company_brc-halo-ext;
+}

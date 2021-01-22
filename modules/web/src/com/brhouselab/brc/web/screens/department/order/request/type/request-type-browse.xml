@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://requestTypeBrowse.caption"
+        focusComponent="requestTypesTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.order.request.type">
+    <data readOnly="true">
+        <collection id="requestTypesDc"
+                    class="com.brhouselab.brc.entity.department.order.RequestType">
+            <view extends="_local"/>
+            <loader id="requestTypesDl">
+                <query>
+                    <![CDATA[select e from brc_RequestType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="requestTypesTable"
+            spacing="true">
+        <dataGrid id="requestTypesTable"
+                  width="100%"
+                  dataContainer="requestTypesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column property="name" id="name"/>
+                <column property="shortName" id="shortName"/>
+                <column property="period" id="period"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="requestTypesTable.create"/>
+                <button id="editBtn" action="requestTypesTable.edit"/>
+                <button id="removeBtn" action="requestTypesTable.remove"/>
+            </buttonsPanel>
+        </dataGrid>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

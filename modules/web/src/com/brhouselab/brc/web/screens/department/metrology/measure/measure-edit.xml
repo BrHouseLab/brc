@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://measureEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.measure">
+    <data>
+        <instance id="measureDc"
+                  class="com.brhouselab.brc.entity.department.metrology.Measure">
+            <view extends="_local">
+                <property name="position" view="_minimal"/>
+                <property name="caliUpType" view="_minimal"/>
+                <property name="measureType" view="_minimal"/>
+                <property name="redValueUnit" view="_minimal"/>
+                <property name="attachment" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="caliUpTypesDc" class="com.brhouselab.brc.entity.department.metrology.CaliUpType"
+                    view="_minimal">
+            <loader id="caliUpTypesDl">
+                <query>
+                    <![CDATA[select e from brc_CaliUpType e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="measureTypesDc" class="com.brhouselab.brc.entity.department.metrology.MeasureType"
+                    view="_minimal">
+            <loader id="measureTypesDl">
+                <query>
+                    <![CDATA[select e from brc_MeasureType e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="redValueUnitsDc" class="com.brhouselab.brc.entity.department.metrology.Unit" view="_minimal">
+            <loader id="redValueUnitsDl">
+                <query>
+                    <![CDATA[select e from brc_Unit e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="attachmentsDc" class="com.brhouselab.brc.entity.department.metrology.Attachment"
+                    view="_minimal">
+            <loader id="attachmentsDl">
+                <query>
+                    <![CDATA[select e from brc_Attachment e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="measureDc">
+                <column width="350px">
+                    <pickerField id="positionField" property="position">
+                        <actions>
+                            <action id="open" type="picker_open"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="nameField" property="name"/>
+                    <lookupPickerField id="caliUpTypeField" optionsContainer="caliUpTypesDc" property="caliUpType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                        </actions>
+                    </lookupPickerField>
+                    <lookupPickerField id="measureTypeField" optionsContainer="measureTypesDc" property="measureType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textField id="redValueField" property="redValue"/>
+                    <lookupPickerField id="redValueUnitField" optionsContainer="redValueUnitsDc"
+                                       property="redValueUnit">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textField id="schemeField" property="scheme"/>
+                    <lookupPickerField id="attachmentField" optionsContainer="attachmentsDc" property="attachment">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textField id="accuracyField" property="accuracy"/>
+                    <textField id="noteField" property="note"/>
+                    <textField id="kksField" property="kks"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

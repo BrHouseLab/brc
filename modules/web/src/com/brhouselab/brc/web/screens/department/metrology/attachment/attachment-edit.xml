@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://attachmentEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.attachment">
+    <data>
+        <instance id="attachmentDc"
+                  class="com.brhouselab.brc.entity.department.metrology.Attachment">
+            <view extends="_local">
+                <property name="attachmentNode" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="attachmentNodesDc" class="com.brhouselab.brc.entity.department.metrology.Attachment"
+                    view="_minimal">
+            <loader id="attachmentNodesDl">
+                <query>
+                    <![CDATA[select e from brc_Attachment e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="attachmentDc">
+            <column width="350px">
+                <lookupPickerField id="attachmentNodeField" optionsContainer="attachmentNodesDc"
+                                   property="attachmentNode">
+                    <actions>
+                        <action id="open" type="picker_open"/>
+                    </actions>
+                </lookupPickerField>
+                <textField id="nameField" property="name"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

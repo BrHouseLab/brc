@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <!--        <item screen="brc_Calendar" caption="mainMsg://menu_config.brc_Calendar"/>-->
+    <menu id="application.task" caption="mainMsg://menu_config.application.task" insertBefore="reports">
+        <item screen="brc_Task.browse" caption="mainMsg://menu_config.brc_Task.browse"/>
+    </menu>
+    <menu id="application.contract" caption="mainMsg://menu_config.application.contract" insertBefore="reports">
+        <item screen="brc_Firm.browse" caption="mainMsg://menu_config.brc_Firm.browse"/>
+        <item screen="brc_Contract.browse" caption="mainMsg://menu_config.brc_Contract.browse"/>
+        <item screen="brc_ContractOrder.browse" caption="mainMsg://menu_config.brc_ContractOrder.browse"/>
+        <menu id="registry.contract" caption="mainMsg://menu_config.registry.contract">
+            <item screen="brc_Service.browse" caption="mainMsg://menu_config.brc_Service.browse"/>
+            <item screen="brc_ContractStatus.browse" caption="mainMsg://menu_config.brc_ContractStatus.browse"/>
+            <item screen="brc_WorksType.browse" caption="mainMsg://menu_config.brc_WorksType.browse"/>
+            <item screen="brc_VAT.browse" caption="mainMsg://menu_config.brc_VAT.browse"/>
+            <item screen="brc_PayType.browse" caption="mainMsg://menu_config.brc_PayType.browse"/>
+            <item screen="brc_PayAttachment.browse" caption="mainMsg://menu_config.brc_PayAttachment.browse"/>
+        </menu>
+    </menu>
+    <menu id="application.work" caption="mainMsg://menu_config.application.work" insertBefore="reports">
+        <item screen="brc_Request.browse" caption="mainMsg://menu_config.brc_Request.browse"/>
+        <item screen="brc_Order.browse" caption="mainMsg://menu_config.brc_Order.browse"/>
+        <menu id="registry.request" caption="mainMsg://menu_config.registry.request">
+            <item screen="brc_Category.browse" caption="mainMsg://menu_config.brc_Category.browse"/>
+            <item screen="brc_RequestType.browse" caption="mainMsg://menu_config.brc_RequestType.browse"/>
+            <item screen="brc_Item.browse" caption="mainMsg://menu_config.brc_Item.browse"/>
+            <item screen="brc_ItemUnit.browse" caption="mainMsg://menu_config.brc_ItemUnit.browse"/>
+        </menu>
+    </menu>
+    <menu id="application.metrology" caption="mainMsg://menu_config.application.metrology" insertBefore="reports">
+        <item screen="brc_MeasuringDevice.browse" caption="mainMsg://menu_config.brc_MeasuringDevice.browse"/>
+        <item screen="brc_Measure.browse" caption="mainMsg://menu_config.brc_Measure.browse"/>
+        <item screen="brc_MeasureDevicePackage.browse" caption="mainMsg://menu_config.brc_MeasureDevicePackage.browse"/>
+        <item screen="brc_CaliUp.browse" caption="mainMsg://menu_config.brc_CaliUp.browse"/>
+        <item screen="brc_Passport.browse" caption="mainMsg://menu_config.brc_Passport.browse"/>
+        <menu id="registry.metrology" caption="mainMsg://menu_config.registry.metrology">
+            <item screen="brc_Position.browse" caption="mainMsg://menu_config.brc_Position.browse"/>
+            <item screen="brc_MeasureDeviceName.browse" caption="mainMsg://menu_config.brc_MeasureDeviceName.browse"/>
+            <item screen="brc_CaliUpType.browse" caption="mainMsg://menu_config.brc_CaliUpType.browse"/>
+            <item screen="brc_CaliUpInterval.browse" caption="mainMsg://menu_config.brc_CaliUpInterval.browse"/>
+            <item screen="brc_Accounting.browse" caption="mainMsg://menu_config.brc_Accounting.browse"/>
+            <item screen="brc_Attachment.browse" caption="mainMsg://menu_config.brc_Attachment.browse"/>
+            <item screen="brc_Unit.browse" caption="mainMsg://menu_config.brc_Unit.browse"/>
+            <item screen="brc_Status.browse" caption="mainMsg://menu_config.brc_Status.browse"/>
+            <item screen="brc_MeasureType.browse" caption="mainMsg://menu_config.brc_MeasureType.browse"/>
+        </menu>
+    </menu>
+    <separator insertBefore="reports"/>
+</menu-config>

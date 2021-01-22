@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://caliUpEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.caliup">
+    <data>
+        <instance id="caliUpDc"
+                  class="com.brhouselab.brc.entity.department.metrology.CaliUp">
+            <view extends="_local">
+                <property name="caliUpType" view="_minimal"/>
+                <property name="document" view="_minimal"/>
+                <property name="measureDevice" view="_local"/>
+            </view>
+            <loader/>
+            <instance id="documentDc" property="document"/>
+            <collection id="measureDeviceDc" property="measureDevice"/>
+        </instance>
+        <collection id="caliUpTypesDc" class="com.brhouselab.brc.entity.department.metrology.CaliUpType"
+                    view="_minimal">
+            <loader id="caliUpTypesDl">
+                <query>
+                    <![CDATA[select e from brc_CaliUpType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="caliUpDc">
+            <column width="350px">
+                <lookupPickerField id="caliUpTypeField" optionsContainer="caliUpTypesDc" property="caliUpType">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                    </actions>
+                </lookupPickerField>
+                <dateField id="dateField" property="date"/>
+                <textField id="numberField" property="number"/>
+                <upload id="documentField" fileStoragePutMode="IMMEDIATE" property="document" showFileName="true"/>
+            </column>
+        </form>
+        <groupBox id="measureDeviceBox"
+                  caption="msg://com.brhouselab.brc.entity.department.metrology/CaliUp.measureDevice">
+            <table id="measureDeviceTable" dataContainer="measureDeviceDc" width="100%" height="200px">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="barcode"/>
+                    <column id="series"/>
+                    <column id="factoryNumber"/>
+                    <column id="lowLevel"/>
+                    <column id="highLevel"/>
+                    <column id="accuracy"/>
+                    <column id="note"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="measureDeviceTable.create"/>
+                    <button action="measureDeviceTable.edit"/>
+                    <button action="measureDeviceTable.remove"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

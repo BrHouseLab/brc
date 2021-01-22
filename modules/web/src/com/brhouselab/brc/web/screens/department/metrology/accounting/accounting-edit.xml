@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://accountingEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.accounting">
+    <data>
+        <instance id="accountingDc"
+                  class="com.brhouselab.brc.entity.department.metrology.Accounting">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="accountingDc">
+            <column width="350px">
+                <lookupField id="typeField" property="type"/>
+                <textField id="numberField" property="number"/>
+                <dateField id="dateField" property="date"/>
+                <textField id="descriptionField" property="description"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

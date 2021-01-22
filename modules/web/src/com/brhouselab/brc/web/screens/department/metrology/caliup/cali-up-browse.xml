@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://caliUpBrowse.caption"
+        focusComponent="caliUpsTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.caliup">
+    <data readOnly="true">
+        <collection id="caliUpsDc"
+                    class="com.brhouselab.brc.entity.department.metrology.CaliUp">
+            <view extends="_local">
+                <property name="caliUpType" view="_minimal"/>
+            </view>
+            <loader id="caliUpsDl">
+                <query>
+                    <![CDATA[select e from brc_CaliUp e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="caliUpsTable"
+            spacing="true">
+        <table id="caliUpsTable"
+               width="100%"
+               dataContainer="caliUpsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="caliUpType"/>
+                <column id="date"/>
+                <column id="number"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="caliUpsTable.create"/>
+                <button id="editBtn" action="caliUpsTable.edit"/>
+                <button id="removeBtn" action="caliUpsTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://serviceEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.contract.service">
+    <data>
+        <instance id="serviceDc"
+                  class="com.brhouselab.brc.entity.department.contract.Service">
+            <view extends="_local">
+                <property name="firm" view="_minimal"/>
+                <property name="targetMD" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="targetMDDc" property="targetMD"/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="serviceDc">
+            <column width="350px">
+                <pickerField id="firmField" property="firm">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="nameField" property="name"/>
+                <textField id="costField" property="cost"/>
+                <textField id="codeField" property="code"/>
+            </column>
+        </form>
+        <groupBox id="targetMDBox" caption="msg://com.brhouselab.brc.entity.department.contract/Service.targetMD">
+            <table id="targetMDTable" dataContainer="targetMDDc" width="100%" height="200px">
+                <actions>
+                    <action id="add" type="add"/>
+                    <action id="exclude" type="exclude"/>
+                </actions>
+                <columns>
+                    <column id="name"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="targetMDTable.add"/>
+                    <button action="targetMDTable.exclude"/>
+                </buttonsPanel>
+            </table>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

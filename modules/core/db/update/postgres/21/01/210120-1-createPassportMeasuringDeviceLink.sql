@@ -1,0 +1,5 @@
+create table BRC_PASSPORT_MEASURING_DEVICE_LINK (
+    PASSPORT_ID uuid,
+    MEASURING_DEVICE_ID uuid,
+    primary key (PASSPORT_ID, MEASURING_DEVICE_ID)
+);

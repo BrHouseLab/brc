@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://taskEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.task">
+    <data>
+        <instance id="taskDc"
+                  class="com.brhouselab.brc.entity.department.task.Task">
+            <view extends="_local">
+                <property name="executor" view="_local"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="usersDc" class="com.haulmont.cuba.security.entity.User" view="_local">
+            <loader>
+                <query>
+                    <![CDATA[select e from sec$User e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <facets>
+        <optionDialog id="confirmDlg"
+                      caption="msg://taskEdit.confirmDlg.caption"
+                      message="msg://taskEdit.confirmDlg.message"
+                      onButton="doneBtn"
+                      type="CONFIRMATION">
+            <actions>
+                <action id="ok" caption="mainMsg://dialog.ok" icon="icons/ok.png"/>
+                <action id="cancel" caption="mainMsg://dialog.cancel" icon="icons/cancel.png"/>
+            </actions>
+        </optionDialog>
+    </facets>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="taskDc">
+            <column width="350px">
+                <textArea id="descriptionField" property="description"/>
+                <lookupPickerField id="executorField" property="executor"
+                                   optionsContainer="usersDc"/>
+                <dateField id="dateToField" property="dateTo"/>
+                <textArea id="resultsField" property="results"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+            <button id="doneBtn" stylename="danger" caption="msg://taskEdit.doneBtn"/>
+        </hbox>
+    </layout>
+</window>

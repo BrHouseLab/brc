@@ -1,0 +1,2 @@
+alter table BRC_ORDER add constraint FK_BRC_ORDER_ON_REQUEST_ITEM foreign key (REQUEST_ITEM_ID) references BRC_REQUEST_ITEM(ID);
+create index IDX_BRC_ORDER_ON_REQUEST_ITEM on BRC_ORDER (REQUEST_ITEM_ID);

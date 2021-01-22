@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://requestBrowse.caption"
+        focusComponent="requestsTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.order.request">
+    <data readOnly="true">
+        <collection id="requestsDc"
+                    class="com.brhouselab.brc.entity.department.order.Request">
+            <view extends="_local">
+                <property name="requestType" view="_minimal"/>
+            </view>
+            <loader id="requestsDl">
+                <query>
+                    <![CDATA[select e from brc_Request e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="requestsTable"
+            spacing="true">
+        <groupTable id="requestsTable"
+                    width="100%"
+                    dataContainer="requestsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="excel" type="excel"/>
+                <action id="listPrintForm" type="listPrintForm"/>
+                <action id="executionHistory" type="executionHistory"/>
+                <action id="runReport" type="runReport"/>
+            </actions>
+            <columns>
+                <column id="requestType"/>
+                <column id="year">
+                    <formatter class="com.haulmont.cuba.gui.components.formatters.DateFormatter" format="yyyy"/>
+                </column>
+                <column id="note"/>
+                <column id="isClose"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="requestsTable.create"/>
+                <button id="editBtn" action="requestsTable.edit"/>
+                <button id="removeBtn" action="requestsTable.remove"/>
+                <button id="excelBtn" action="requestsTable.excel"/>
+                <button id="listPrintFormBtn" action="requestsTable.listPrintForm"/>
+                <button id="executionHistoryBtn" action="requestsTable.executionHistory"/>
+                <button id="runReportBtn" action="requestsTable.runReport"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://requestEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.order.request">
+    <data>
+        <instance id="requestDc"
+                  class="com.brhouselab.brc.entity.department.order.Request">
+            <view extends="_local">
+                <property name="requestType" view="_minimal"/>
+                <property name="requestItems" view="_local">
+                    <property name="item" view="_local">
+                        <property name="category" view="_minimal"/>
+                    </property>
+                </property>
+            </view>
+            <loader/>
+            <collection id="requestItemsDc" property="requestItems"/>
+        </instance>
+        <collection id="requestTypeDc" class="com.brhouselab.brc.entity.department.order.RequestType" view="_minimal">
+            <loader>
+                <query>
+                    <![CDATA[select e from brc_RequestType e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="requestItemsBox" spacing="true">
+        <form id="form" dataContainer="requestDc">
+            <column width="400px">
+                <lookupField id="requestTypeField" property="requestType" optionsContainer="requestTypeDc"/>
+                <textArea id="noteField" property="note" rows="2" cols="50"/>
+            </column>
+            <column width="300px">
+                <dateField id="yearField" property="year" dateFormat="yyyy" resolution="YEAR"/>
+                <checkBox id="isCloseField" property="isClose"/>
+            </column>
+        </form>
+        <groupBox id="requestItemsBox" caption="msg://com.brhouselab.brc.entity.department.order/Request.requestItems">
+            <groupTable id="requestItemsTable" dataContainer="requestItemsDc" width="100%" height="100%"
+            multiLineCells="true" aggregatable="true" showTotalAggregation="false">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <group>
+                        <column id="item.category"/>
+                    </group>
+                    <column id="item"/>
+                    <column id="value"/>
+                    <column id="item.cost"/>
+                    <column id="totalCost">
+                        <aggregation type="SUM"/>
+                    </column>
+                    <column id="consumer"/>
+                    <column id="note"/>
+                </columns>
+                <buttonsPanel>
+                    <button action="requestItemsTable.create"/>
+                    <button action="requestItemsTable.edit"/>
+                    <button action="requestItemsTable.remove"/>
+                    <button id="copyFromRequest" caption="msg://requestEdit.copyFromRequest"/>
+                </buttonsPanel>
+            </groupTable>
+        </groupBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

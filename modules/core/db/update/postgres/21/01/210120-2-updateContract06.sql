@@ -1,0 +1,2 @@
+alter table BRC_CONTRACT add constraint FK_BRC_CONTRACT_ON_WORKS_TYPE foreign key (WORKS_TYPE_ID) references BRC_WORKS_TYPE(ID);
+create index IDX_BRC_CONTRACT_ON_WORKS_TYPE on BRC_CONTRACT (WORKS_TYPE_ID);

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://orderEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.order.order">
+    <data>
+        <instance id="orderDc"
+                  class="com.brhouselab.brc.entity.department.order.Order">
+            <view extends="_local">
+                <property name="requestItem" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="requestsDc" class="com.brhouselab.brc.entity.department.order.Request" view="_minimal">
+            <loader>
+                <query>
+                    <![CDATA[select e from brc_Request e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="categoriesDc" class="com.brhouselab.brc.entity.department.order.Category" view="_local">
+            <loader>
+                <query>
+                    <![CDATA[select e from brc_Category e where e in
+                    (select c.item.category from brc_RequestItem c where c.request = :container_requestsDc)]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="itemsDc" class="com.brhouselab.brc.entity.department.order.RequestItem" view="_minimal">
+            <loader>
+                <query>
+                    <![CDATA[select e from brc_RequestItem e where e.request = :container_requestsDc]]>
+                    <condition>
+                        <c:jpql>
+                            <c:where>
+                                e.item.category = :container_categoriesDc
+                            </c:where>
+                        </c:jpql>
+                    </condition>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout expand="editActions" spacing="true">
+        <lookupPickerField id="requestField" caption="msg://orderEdit.requestFiled"
+                           width="400px" optionsContainer="requestsDc"/>
+        <lookupPickerField id="categoryField" caption="msg://orderEdit.categoryField"
+                           visible="false" width="400px" optionsContainer="categoriesDc"/>
+        <form id="form" dataContainer="orderDc" visible="false">
+            <column width="450px">
+                <lookupPickerField id="requestItemField" property="requestItem"
+                                   optionsContainer="itemsDc">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </lookupPickerField>
+                <textField id="valueField" property="value"/>
+                <dateField id="dateField" property="date" autofill="true"/>
+                <textField id="numberField" property="number"/>
+                <textArea id="noteField" property="note"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

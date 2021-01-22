@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://caliUpIntervalBrowse.caption"
+        focusComponent="caliUpIntervalsTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.caliupinterval">
+    <data readOnly="true">
+        <collection id="caliUpIntervalsDc"
+                    class="com.brhouselab.brc.entity.department.metrology.CaliUpInterval">
+            <view extends="_local"/>
+            <loader id="caliUpIntervalsDl">
+                <query>
+                    <![CDATA[select e from brc_CaliUpInterval e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="caliUpIntervalsTable"
+            spacing="true">
+        <table id="caliUpIntervalsTable"
+               width="100%"
+               dataContainer="caliUpIntervalsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="period"/>
+                <column id="note"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="caliUpIntervalsTable.create"/>
+                <button id="editBtn" action="caliUpIntervalsTable.edit"/>
+                <button id="removeBtn" action="caliUpIntervalsTable.remove"/>
+            </buttonsPanel>
+        </table>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://contractEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.contract.contract">
+    <data>
+        <instance id="contractDc"
+                  class="com.brhouselab.brc.entity.department.contract.Contract">
+            <view extends="_local">
+                <property name="valueOfVAT" view="_minimal"/>
+                <property name="costVAT"/>
+                <property name="worksType" view="_minimal"/>
+                <property name="payType" view="_minimal"/>
+                <property name="payAttachment" view="_minimal"/>
+                <property name="status" view="_minimal"/>
+                <property name="firm" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="firmsDc" class="com.brhouselab.brc.entity.department.contract.Firm" view="_minimal">
+            <loader id="firmsDl">
+                <query>
+                    <![CDATA[select e from brc_Firm e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="valueOfVATsDc" class="com.brhouselab.brc.entity.department.contract.VAT" view="_minimal">
+            <loader id="valueOfVATsDl">
+                <query>
+                    <![CDATA[select e from brc_VAT e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="worksTypesDc" class="com.brhouselab.brc.entity.department.contract.WorksType" view="_minimal">
+            <loader id="worksTypesDl">
+                <query>
+                    <![CDATA[select e from brc_WorksType e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="payTypesDc" class="com.brhouselab.brc.entity.department.contract.PayType" view="_minimal">
+            <loader id="payTypesDl">
+                <query>
+                    <![CDATA[select e from brc_PayType e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="payAttachmentsDc" class="com.brhouselab.brc.entity.department.contract.PayAttachment"
+                    view="_minimal">
+            <loader id="payAttachmentsDl">
+                <query>
+                    <![CDATA[select e from brc_PayAttachment e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="statusesDc" class="com.brhouselab.brc.entity.department.contract.ContractStatus"
+                    view="_minimal">
+            <loader id="statusesDl">
+                <query>
+                    <![CDATA[select e from brc_ContractStatus e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="contractDc">
+                <column width="350px">
+                    <lookupPickerField id="firmField" property="firm" optionsContainer="firmsDc"/>
+                    <textField id="numberField" property="number"/>
+                    <dateField id="contractDateField" property="contractDate"/>
+                    <textField id="costField" property="cost"/>
+                    <checkBox id="withVATField" property="withVAT"/>
+                    <lookupPickerField id="valueOfVATField" optionsContainer="valueOfVATsDc" property="valueOfVAT">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textField id="costVATField" property="costVAT"/>
+                    <dateField id="expiredDateField" property="expiredDate"/>
+                    <textArea id="descriptionField" property="description"/>
+                    <lookupPickerField id="worksTypeField" optionsContainer="worksTypesDc" property="worksType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <lookupPickerField id="payTypeField" optionsContainer="payTypesDc" property="payType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <lookupPickerField id="payAttachmentField" optionsContainer="payAttachmentsDc"
+                                       property="payAttachment">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <lookupPickerField id="statusField" optionsContainer="statusesDc" property="status">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textArea id="noteField" property="note"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

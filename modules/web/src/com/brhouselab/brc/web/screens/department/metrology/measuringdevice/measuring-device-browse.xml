@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://measuringDeviceBrowse.caption"
+        focusComponent="measuringDevicesTable"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.measuringdevice">
+    <data readOnly="true">
+        <collection id="measuringDevicesDc"
+                    class="com.brhouselab.brc.entity.department.metrology.MeasuringDevice">
+            <view extends="_minimal">
+                <property name="name"/>
+                <property name="series"/>
+                <property name="factoryNumber"/>
+                <property name="caliUp" view="_minimal"/>
+                <property name="statuses" view="_minimal"/>
+            </view>
+            <loader id="measuringDevicesDl">
+                <query>
+                    <![CDATA[select e from brc_MeasuringDevice e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="measuringDevicesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="measuringDevicesTable"
+                dataLoader="measuringDevicesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="measuringDevicesTable"
+                    width="100%"
+                    dataContainer="measuringDevicesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="series"/>
+                <column id="factoryNumber"/>
+                <column id="caliUp"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="measuringDevicesTable.create"/>
+                <button id="editBtn" action="measuringDevicesTable.edit"/>
+                <button id="removeBtn" action="measuringDevicesTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

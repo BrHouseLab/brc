@@ -1,0 +1,1 @@
+drop table if exists BRC_STATUS__U30403 cascade ;

@@ -1,0 +1,2 @@
+alter table BRC_MEASURE add constraint FK_BRC_MEASURE_ON_CALI_UP_TYPE foreign key (CALI_UP_TYPE_ID) references BRC_CALI_UP_TYPE(ID);
+create index IDX_BRC_MEASURE_ON_CALI_UP_TYPE on BRC_MEASURE (CALI_UP_TYPE_ID);

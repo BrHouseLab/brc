@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://measuringDeviceEdit.caption"
+        focusComponent="form"
+        messagesPack="com.brhouselab.brc.web.screens.department.metrology.measuringdevice">
+    <data>
+        <instance id="measuringDeviceDc"
+                  class="com.brhouselab.brc.entity.department.metrology.MeasuringDevice">
+            <view extends="_local">
+                <property name="measureType" view="_minimal"/>
+                <property name="unit" view="_minimal"/>
+                <property name="caliUpInterval" view="_minimal"/>
+                <property name="caliUp" view="_minimal"/>
+                <property name="passport" view="_minimal"/>
+                <property name="accounting" view="_minimal"/>
+                <property name="statuses" view="_minimal"/>
+                <property name="name" view="_minimal"/>
+            </view>
+            <loader/>
+            <collection id="statusDc" property="statuses"/>
+        </instance>
+        <collection id="measureTypesDc" class="com.brhouselab.brc.entity.department.metrology.MeasureType"
+                    view="_minimal">
+            <loader id="measureTypesDl">
+                <query>
+                    <![CDATA[select e from brc_MeasureType e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="unitsDc" class="com.brhouselab.brc.entity.department.metrology.Unit" view="_minimal">
+            <loader id="unitsDl">
+                <query>
+                    <![CDATA[select e from brc_Unit e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="caliUpIntervalsDc" class="com.brhouselab.brc.entity.department.metrology.CaliUpInterval"
+                    view="_minimal">
+            <loader id="caliUpIntervalsDl">
+                <query>
+                    <![CDATA[select e from brc_CaliUpInterval e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="caliUpsDc" class="com.brhouselab.brc.entity.department.metrology.CaliUp" view="_minimal">
+            <loader id="caliUpsDl">
+                <query>
+                    <![CDATA[select e from brc_CaliUp e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="namesDc" class="com.brhouselab.brc.entity.department.metrology.MeasureDeviceName" view="_minimal">
+            <loader id="namesDl">
+                <query>
+                    <![CDATA[select e from brc_MeasureDeviceName e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="scrollBox" spacing="true">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="measuringDeviceDc">
+                <column width="350px">
+                    <textField id="barcodeField" property="barcode"/>
+                    <lookupPickerField id="nameField" property="name" optionsContainer="namesDc"/>
+                    <textField id="seriesField" property="series"/>
+                    <textField id="factoryNumberField" property="factoryNumber"/>
+                    <lookupPickerField id="measureTypeField" optionsContainer="measureTypesDc" property="measureType">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textField id="lowLevelField" property="lowLevel"/>
+                    <textField id="highLevelField" property="highLevel"/>
+                    <lookupPickerField id="unitField" optionsContainer="unitsDc" property="unit">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <lookupPickerField id="caliUpIntervalField" optionsContainer="caliUpIntervalsDc"
+                                       property="caliUpInterval">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                        </actions>
+                    </lookupPickerField>
+                    <lookupPickerField id="caliUpField" optionsContainer="caliUpsDc" property="caliUp">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </lookupPickerField>
+                    <textField id="accuracyField" property="accuracy"/>
+                    <pickerField id="passportField" property="passport">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <pickerField id="accountingField" property="accounting">
+                        <actions>
+                            <action id="lookup" type="picker_lookup"/>
+                            <action id="open" type="picker_open"/>
+                            <action id="clear" type="picker_clear"/>
+                        </actions>
+                    </pickerField>
+                    <textField id="noteField" property="note"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

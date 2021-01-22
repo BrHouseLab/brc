@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fts-config xmlns="http://schemas.haulmont.com/cuba/fts.xsd">
+    <entities>
+        <entity class="com.brhouselab.brc.entity.department.order.Order">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.order.RequestItem">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.order.RequestType">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.order.Request">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.order.Item">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.order.Category">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.task.Task">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.MeasuringDevice">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.MeasureType">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.Unit">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.CaliUpInterval">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.CaliUp">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.Passport">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.Service">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.Accounting">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.Attachment">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.StatusItem">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.Measure">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.Contract">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.ContractOrder">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.VAT">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.WorksType">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.PayType">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.PayAttachment">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.ContractStatus">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.order.ItemUnit">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.MeasureDevicePackage">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.Position">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.CaliUpType">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.metrology.MeasureDeviceName">
+            <include re=".*"/>
+        </entity>
+        <entity class="com.brhouselab.brc.entity.department.contract.Firm">
+            <include re=".*"/>
+        </entity>
+    </entities>
+</fts-config>

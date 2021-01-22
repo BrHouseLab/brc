@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+    <persistence-unit name="brc" transaction-type="RESOURCE_LOCAL">
+
+        <class>com.brhouselab.brc.entity.department.order.Category</class>
+        <class>com.brhouselab.brc.entity.department.order.Item</class>
+        <class>com.brhouselab.brc.entity.department.order.Request</class>
+        <class>com.brhouselab.brc.entity.department.order.RequestType</class>
+        <class>com.brhouselab.brc.entity.department.order.RequestItem</class>
+        <class>com.brhouselab.brc.entity.department.order.Order</class>
+        <class>com.brhouselab.brc.entity.department.task.Task</class>
+        <class>com.brhouselab.brc.entity.department.metrology.MeasuringDevice</class>
+        <class>com.brhouselab.brc.entity.department.metrology.MeasureType</class>
+        <class>com.brhouselab.brc.entity.department.metrology.Unit</class>
+        <class>com.brhouselab.brc.entity.department.metrology.CaliUpInterval</class>
+        <class>com.brhouselab.brc.entity.department.metrology.CaliUp</class>
+        <class>com.brhouselab.brc.entity.department.metrology.Passport</class>
+        <class>com.brhouselab.brc.entity.department.contract.Service</class>
+        <class>com.brhouselab.brc.entity.department.metrology.Accounting</class>
+        <class>com.brhouselab.brc.entity.department.metrology.Attachment</class>
+        <class>com.brhouselab.brc.entity.department.metrology.StatusItem</class>
+        <class>com.brhouselab.brc.entity.department.metrology.Measure</class>
+        <class>com.brhouselab.brc.entity.department.contract.Contract</class>
+        <class>com.brhouselab.brc.entity.department.contract.ContractOrder</class>
+        <class>com.brhouselab.brc.entity.department.contract.VAT</class>
+        <class>com.brhouselab.brc.entity.department.contract.WorksType</class>
+        <class>com.brhouselab.brc.entity.department.contract.PayType</class>
+        <class>com.brhouselab.brc.entity.department.contract.PayAttachment</class>
+        <class>com.brhouselab.brc.entity.department.contract.ContractStatus</class>
+        <class>com.brhouselab.brc.entity.department.order.ItemUnit</class>
+        <class>com.brhouselab.brc.entity.department.contract.MeasureDevicePackage</class>
+        <class>com.brhouselab.brc.entity.department.metrology.Position</class>
+        <class>com.brhouselab.brc.entity.department.metrology.CaliUpType</class>
+        <class>com.brhouselab.brc.entity.department.metrology.MeasureDeviceName</class>
+        <class>com.brhouselab.brc.entity.department.contract.Firm</class>
+    </persistence-unit>
+</persistence>
